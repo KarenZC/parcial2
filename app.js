@@ -96,16 +96,19 @@ app.get('/api/getAnimal/:animal', function(req, res) {
     var chosen = req.params.animal;
 
     console.log(chosen);
-
+    var found;
     for (var i = 0; i < animals.length; i++) {
         if (chosen === animals[i].animalType) {
-            return res.json(animals[i]);
+            found = animals[i]
         }
+
+
     }
 
-    //return res.json(false);
-
-    res.render('pages/any', { title: chosen, animal: animals })
+    res.render('pages/any', {
+        title: chosen,
+        animal: found
+    })
 
 });
 
